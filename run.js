@@ -11,6 +11,7 @@ module.exports = (function() {
 
     server.startServer(function() {
         console.log('Server listening on port ' + port);
+        console.log(env)
     });
 
 })();
