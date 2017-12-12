@@ -2,7 +2,7 @@ node {
     checkout scm
     stage('Clean') {
         // Clean files from last build.
-        //sh 'git clean -dfxq'
+        // sh 'git clean -dfxq --e ec2_instance'
     }
     stage('Setup') {
         // Prefer yarn over npm.
@@ -14,6 +14,18 @@ node {
     }
     stage('Test') {
         sh 'npm run test:nowatch'
+    }
+    stage('api-test') {
+      echo api-test
+      // docker-compose -d up
+      // run npm run-script apitest:nowatch
+      // docker-compose down
+    }
+    stage('load-test') {
+      echo load-test
+      // docker-compose -d up
+      // run npm run-script loadtest:nowatch
+      // docker-compose down
     }
     stage('Deploy') {
         sh './dockerbuild.sh'
