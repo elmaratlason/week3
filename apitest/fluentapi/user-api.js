@@ -11,23 +11,30 @@ module.exports=function(injected){
     let allGames=[];
 
     /* Assignment: Explain what the push/pop functions do for this API. What effect would it have
-    on the fluent API if we did not have them?
-      * */
+    *   on the fluent API if we did not have them?
+    it allows for asynchrounous function, waiting on moves, if move has not been pushed to "stack" we will wait for it
+    * */
 
     function create(){
         let waitingFor={
             counters: {},
             push:function(verb){
+          //      console.debug("Push " + verb)
                 waitingFor.counters[verb]=waitingFor.counters[verb] || [];
                 waitingFor.counters[verb].push(verb);
             },
             pop:function(verb, message){
                 if(!waitingFor.counters[verb]){
+//                  console.log("Pop " + verb)
+  //                console.log(message)
                     if(verb!=="GameCreated"){
+    //                  console.log("Pop " + verb)
+      //                console.log(message)
                         fail("Not waiting on " + verb  + ", ERROR!" + JSON.stringify(message) + JSON.stringify(game));
                     }
                 } else {
                     waitingFor.counters[verb].pop();
+        //            console.log("waiting for " + verb)
                 }
             },
             count(){

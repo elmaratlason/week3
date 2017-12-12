@@ -23,7 +23,8 @@ const testAPI = TestAPI(inject({
 describe('Tictactoe load test', function () {
 
 
-    /* Assignment: Find appropriate numbers to configure the load test so it passes on your buildserver
+    /*
+    * Assignment: Find appropriate numbers to configure the load test so it passes on your buildserver
     * under normal load.
     * on my local machine 600 / 20
     */

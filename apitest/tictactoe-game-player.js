@@ -65,11 +65,11 @@ function playGame(done) {
          */
         userB.expectGameJoined().expectMoveMade('X').joinGame(userA.getGame().gameId).then(function () {
         //userB.joinGame(userA.getGame().gameId).expectMoveMade('X').expectGameJoined().then(function () {
-//          console.log("B - Join game as A has joined")
+//          console.debug("B - Join game as A has joined")
             userB.expectMoveMade('O').expectMoveMade('X').placeMove(1, 0).then(() => {                      // B after A moves
-  //            console.log("B - place move 1.0")
+  //            console.debug("B - place move 1.0")
                 userB.expectMoveMade('O').expectMoveMade('X').expectGameWon().placeMove(0, 2).then(() => { // B after A moves
-    //              console.log("B - place move 2.0")
+    //              console.debug("B - place move 2.0")
                     userB.disconnect();
                     gameDone("O");
                 })
@@ -78,16 +78,16 @@ function playGame(done) {
     }
 
     userA.expectGameCreated().createGame().then(() => {
-//        console.log("A - game has been created, call function recursive")
+//        console.debug("A - game has been created, call function recursive")
         playOSide();
         userA.expectGameJoined().then(() => {
-  //        console.log("A - has joined the game")
+  //        console.debug("A - has joined the game")
             userA.expectMoveMade('X').expectMoveMade('O').placeMove(0, 0).then(() => {   //  A
-    //          console.log("A - place move 0.0")
+    //          console.debug("A - place move 0.0")
                 userA.expectMoveMade('X').expectMoveMade('O').placeMove(1, 1).then(() => {   // A
-      //            console.log("A - place move 1.1")
+      //            console.debug("A - place move 1.1")
                     userA.expectMoveMade('X').expectGameWon().placeMove(2, 2).then(function () {
-        //              console.log("A - place move 2.2 and expect to win game")
+        //              console.debug("A - place move 2.2 and expect to win game")
                         userA.disconnect();
                         gameDone("X");
                     }); // Winning move

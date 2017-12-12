@@ -19,6 +19,7 @@ module.exports=function(injected){
             io,
             env:"test",
             incomingEventLogger: function(verb, message){
+                console.log("routingContext " + me.cmdId)
                 fs.appendFile(incomingEventLogFile,verb + " - " + JSON.stringify(message) + "\n", function(err){
                     if(err){
                         console.error("Error writing to log file " + incomingEventLogFile + "Error:\n" + err);
@@ -42,12 +43,15 @@ module.exports=function(injected){
             cleanDatabase:()=>{
                 let cmdId = commandId++;
                 routingContext.commandRouter.routeMessage({commandId:cmdId, type:"cleanDatabase"});
+                console.log("cmdId: " + cmdId)
                 return me;
 
             },
             waitForCleanDatabase:(whenClean)=>{
+                console.log("waitForClean " + whenClean)
                 waitingFor.push("expectDatabaseCleaned");
                 routingContext.eventRouter.on('databaseCleaned', function(chatMessage){
+                    console.log("waitForClean " + chatMessage)
                     waitingFor.pop(); // expectDatabaseCleaned
                     whenClean && whenClean();
                 });
