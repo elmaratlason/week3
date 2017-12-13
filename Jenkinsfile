@@ -16,13 +16,13 @@ node {
         sh 'npm run test:nowatch'
     }
     stage('api-test') {
-      echo api-test
+      echo 'api-test'
       // docker-compose -d up
       // run npm run-script apitest:nowatch
       // docker-compose down
     }
     stage('load-test') {
-      echo load-test
+      echo 'load-test'
       // docker-compose -d up
       // run npm run-script loadtest:nowatch
       // docker-compose down
