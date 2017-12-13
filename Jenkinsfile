@@ -21,8 +21,8 @@ node {
     }
     stage('api-test') {
       echo 'api-test'
-      sh 'export GIT_COMMIT=$(git rev-parse HEAD)'
-      sh '/usr/local/bin/docker-compose -f /var/lib/jenkins/workspace/hgop/provisioning/docker-compose.yml up -d'
+      sh 'echo $(pwd)'
+      sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose -f /var/lib/jenkins/workspace/hgop/provisioning/docker-compose.yml up -d'
       sh 'run npm run-script apitest:nowatch'
       sh '/usr/local/bin/docker-compose down'
     }
