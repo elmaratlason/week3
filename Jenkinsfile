@@ -29,7 +29,7 @@ node {
     stage('load-test') {
       echo 'load-test'
       sh '/usr/local/bin/docker-compose -d up'
-      sh 'run npm run-script loadtest:nowatch'
+      sh './runserver.sh && run npm run-script loadtest:nowatch'
       sh '/usr/local/bin/docker-compose down'
     }
     stage('Deploy') {
