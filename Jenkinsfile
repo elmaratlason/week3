@@ -22,13 +22,13 @@ node {
     stage('api-test') {
       echo 'api-test'
       sh 'echo $(pwd)'
-      sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose -f /var/lib/jenkins/workspace/hgop/provisioning/docker-compose.yml up -d'
-      sh 'run npm run-script apitest:nowatch'
+      sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose -f provisioning/docker-compose.yml up -d'
+      sh 'npm run-script startserver && npm run-script apitest:nowatch'
       sh '/usr/local/bin/docker-compose down'
     }
     stage('load-test') {
       echo 'load-test'
-      sh '/usr/local/bin/docker-compose -d up'
+      sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose -f provisioning/docker-compose.yml up -d'
       sh './runserver.sh && run npm run-script loadtest:nowatch'
       sh '/usr/local/bin/docker-compose down'
     }
