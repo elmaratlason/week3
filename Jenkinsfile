@@ -17,15 +17,15 @@ node {
     }
     stage('api-test') {
       echo 'api-test'
-      // docker-compose -d up
-      // run npm run-script apitest:nowatch
-      // docker-compose down
+      sh '/usr/local/bin/docker-compose -d up'
+      sh 'run npm run-script apitest:nowatch'
+      sh '/usr/local/bin/docker-compose down'
     }
     stage('load-test') {
       echo 'load-test'
-      // docker-compose -d up
-      // run npm run-script loadtest:nowatch
-      // docker-compose down
+      sh '/usr/local/bin/docker-compose -d up'
+      sh 'run npm run-script loadtest:nowatch'
+      sh '/usr/local/bin/docker-compose down'
     }
     stage('Deploy') {
         sh './dockerbuild.sh'
@@ -36,6 +36,6 @@ node {
     }
 // færa dockerbuild fyrir framan load-test og api-test
 // breyta portum f. application
-// 
+//
 
 }
