@@ -34,4 +34,8 @@ node {
             sh "./provision-new-environment.sh"
         }
     }
+// færa dockerbuild fyrir framan load-test og api-test
+// breyta portum f. application
+// 
+
 }
