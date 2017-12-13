@@ -16,7 +16,7 @@ node {
         sh 'npm run test:nowatch'
     }
     stage('Docker Build') {
-      echo DockerBuild
+      echo 'DockerBuild'
       sh './dockerbuild.sh'
     }
     stage('api-test') {
