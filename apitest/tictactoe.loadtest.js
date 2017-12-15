@@ -28,7 +28,7 @@ describe('Tictactoe load test', function () {
     * under normal load.
     * on my local machine 600 / 20
     */
-    let timelimit = 600;
+    let timelimit = 800;
     let count = 20;
 
     beforeEach(function (done) {
