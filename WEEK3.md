@@ -18,7 +18,7 @@ Completed the migrations needed for the application to work
 - Rename of files
 
 On Git push Jenkins pulls my code and the Tic Tac Toe application is deployed through a build pipeline, but only if all my tests are successful
-- This should work, Jenkins can pull from Github but after Jenkins got killed, GitHub is having trouble sendin hooks to notify of push.
+- This works!
 
 Filled out the Assignments: for the API and Load tests
 [Assignement](apitest/assignment.md)
