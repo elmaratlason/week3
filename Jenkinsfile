@@ -34,10 +34,10 @@ node {
       //}
       sh 'npm run startpostgres'
       sh 'npm run startserver & npm run apitest:nowatch && sleep 5 && kill %1'
-      //dir('./provisioning'){
+      // dir('./provisioning'){
       //    sh '/usr/local/bin/docker-compose down'
       //
-      }
+      //}
       // sh 'docker kill $(docker ps -q) || true'
     }
     stage('load-test') {
