@@ -2,6 +2,7 @@
 
 
 # DataDog
+## https://p.datadoghq.com/sb/5cb1a354c-cbf8737fd7
 
 agents for docker, ubuntu, jenkins installed
 https://app.datadoghq.com/
@@ -15,3 +16,6 @@ for both ec2 instances, I added neccessary data dog steps
 - github
 - docker
 - aws
+
+## FAILURE
+somehow datadog crashed my jenkins instance, so I had to install a new one.
