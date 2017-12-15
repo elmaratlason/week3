@@ -33,10 +33,12 @@ node {
           sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose up -d'
       }
       //sh 'npm run-script startserver && npm run-script apitest:nowatch'
+      sh 'npm run postgres'
       sh 'npm run startserver & npm run apitest:nowatch && sleep 5 && kill $1'
       dir('./provisioning'){
           sh '/usr/local/bin/docker-compose down'
       }
+      sh 'docker kill $(docker ps -q) || true'
     }
     stage('load-test') {
       echo "LOAD-TEST"
@@ -44,6 +46,7 @@ node {
         sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose up -d'
       }
       //sh './runserver.sh && run npm run-script loadtest:nowatch'
+      sh 'npm run postgres'
       sh 'npm run startserver & npm run loadtest:nowatch && sleep 5 && kill $1'
       dir('./provisioning'){
           sh '/usr/local/bin/docker-compose down'
