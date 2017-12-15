@@ -1,5 +1,5 @@
 node {
-    env.NODEJS_HOME = "${recent node'}"
+    env.NODEJS_HOME = "${'recent node'}"
     checkout scm
     stage('Clean') {
         // Clean files from last build.
