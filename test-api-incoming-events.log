@@ -891,3 +891,23 @@ eventIssued - {"type":"databaseCleaned"}
 eventIssued - {"eventId":"eventLogCleaned","type":"tableCleaned","tableName":"eventlog"}
 eventIssued - {"eventId":"commandLogCleaned","type":"tableCleaned","tableName":"commandlog"}
 eventIssued - {"type":"databaseCleaned"}
+eventIssued - {"eventId":"eventLogCleaned","type":"tableCleaned","tableName":"eventlog"}
+eventIssued - {"eventId":"commandLogCleaned","type":"tableCleaned","tableName":"commandlog"}
+eventIssued - {"type":"databaseCleaned"}
+eventIssued - {"eventId":"eventLogCleaned","type":"tableCleaned","tableName":"eventlog"}
+eventIssued - {"eventId":"commandLogCleaned","type":"tableCleaned","tableName":"commandlog"}
+eventIssued - {"type":"databaseCleaned"}
+eventIssued - {"eventId":"eventLogCleaned","type":"tableCleaned","tableName":"eventlog"}
+eventIssued - {"eventId":"commandLogCleaned","type":"tableCleaned","tableName":"commandlog"}
+eventIssued - {"type":"databaseCleaned"}
+eventIssued - {"eventId":"eventLogCleaned","type":"tableCleaned","tableName":"eventlog"}
+eventIssued - {"eventId":"commandLogCleaned","type":"tableCleaned","tableName":"commandlog"}
+eventIssued - {"type":"databaseCleaned"}
+eventIssued - {"eventId":"40965530-e9ee-46e8-bee1-7b9befa1f79b","type":"chatMessageReceived","message":"Message 90","sender":{"clientId":348,"user":{"userName":"Anonymous#348","userId":348}}}
+eventIssued - {"eventId":"7b55fed0-8885-4a4d-97ad-ba851aa7b945","type":"chatMessageReceived","message":"Message 91","sender":{"clientId":349,"user":{"userName":"Anonymous#349","userId":349}}}
+eventIssued - {"eventId":"8b9c30b9-f71c-4196-b14c-e4ec4f9a0a8f","type":"chatMessageReceived","message":"Message 87","sender":{"clientId":345,"user":{"userName":"Anonymous#345","userId":345}}}
+eventIssued - {"eventId":"ccfa91f1-ed33-4460-be00-2e4280b1c459","type":"chatMessageReceived","message":"Message 88","sender":{"clientId":346,"user":{"userName":"Anonymous#346","userId":346}}}
+eventIssued - {"eventId":"66c2bd53-e982-4ca6-802f-31400871849a","type":"chatMessageReceived","message":"Message 89","sender":{"clientId":347,"user":{"userName":"Anonymous#347","userId":347}}}
+eventIssued - {"eventId":"eventLogCleaned","type":"tableCleaned","tableName":"eventlog"}
+eventIssued - {"eventId":"commandLogCleaned","type":"tableCleaned","tableName":"commandlog"}
+eventIssued - {"type":"databaseCleaned"}
