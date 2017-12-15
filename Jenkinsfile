@@ -33,7 +33,7 @@ node {
       //    sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose up -d'
       //}
       sh 'npm run startpostgres'
-      sh 'npm run startserver & npm run apitest:nowatch && sleep 5 && kill %1'
+      // sh 'npm run startserver & npm run apitest:nowatch && sleep 5 && kill %1'
       // dir('./provisioning'){
       //    sh '/usr/local/bin/docker-compose down'
       //
@@ -47,7 +47,7 @@ node {
       //}
       //sh './runserver.sh && run npm run-script loadtest:nowatch'
   //    sh 'npm run startpostgres'
-      sh 'npm run startserver & npm run loadtest:nowatch && sleep 5 && kill %1'
+      sh 'npm run startserver & npm run apitest:nowatch && npm run loadtest:nowatch && sleep 5 && kill %1'
     //  dir('./provisioning'){
     //      sh '/usr/local/bin/docker-compose down'
     //  }
