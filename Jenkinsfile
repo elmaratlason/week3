@@ -3,6 +3,8 @@ node {
     stage('Clean') {
         // Clean files from last build.
         // sh 'git clean -dfxq --e ec2_instance'
+        // stop all docker containers
+        sh 'docker kill $(docker ps -q)'
     }
     stage('Setup') {
         // Prefer yarn over npm.
@@ -15,7 +17,6 @@ node {
     stage('Test') {
         // RUN UNIT TESTS
         sh 'npm run test:nowatch'
-
         junit '**/REPORTS/*.xml'
 
     }
