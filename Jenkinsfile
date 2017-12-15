@@ -1,10 +1,11 @@
 node {
+    env.NODEJS_HOME = "${recent node'}"
     checkout scm
     stage('Clean') {
         // Clean files from last build.
         // sh 'git clean -dfxq --e ec2_instance'
         // stop all docker containers
-        sh 'docker kill $(docker ps -q)'
+        sh 'docker kill $(docker ps -q) || echo "no running containers"'
     }
     stage('Setup') {
         // Prefer yarn over npm.
@@ -15,34 +16,44 @@ node {
         }
     }
     stage('Test') {
-        // RUN UNIT TESTS
+        echo "UNIT TESTS"
         sh 'npm run test:nowatch'
         junit '**/REPORTS/*.xml'
 
     }
     stage('Docker Build') {
+      echo "DOCKER BUILD"
       // build docker image
       sh './dockerbuild.sh'
     }
     stage('api-test') {
+        echo "API-TEST"
       // run apitest with docker-compose on jenkins server
-      sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose -f ./provisioning/docker-compose.yml up -d'
+      dir('./provisioning'){
+          sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose up -d'
+      }
       //sh 'npm run-script startserver && npm run-script apitest:nowatch'
-      sh '/usr/local/bin/docker-compose down -f ./provisioning/docker-compose.yml'
+      sh 'npm run startserver & npm run apitest:nowatch && sleep 5 && kill $1'
+      dir('./provisioning'){
+          sh '/usr/local/bin/docker-compose down'
+      }
     }
     stage('load-test') {
-      sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose -f provisioning/docker-compose.yml up -d'
+      echo "LOAD-TEST"
+      dir('./provisioning'){
+        sh 'export GIT_COMMIT=$(git rev-parse HEAD) && /usr/local/bin/docker-compose up -d'
+      }
       //sh './runserver.sh && run npm run-script loadtest:nowatch'
-      sh '/usr/local/bin/docker-compose down -f ./provisioning/docker-compose.yml'
+      sh 'npm run startserver & npm run loadtest:nowatch && sleep 5 && kill $1'
+      dir('./provisioning'){
+          sh '/usr/local/bin/docker-compose down'
+      }
     }
     stage('Deploy') {
+        echo "DEPLOY"
         dir('./provisioning')
         {
             sh "./provision-new-environment.sh"
         }
     }
-// færa dockerbuild fyrir framan load-test og api-test
-// breyta portum f. application
-//
-
 }
