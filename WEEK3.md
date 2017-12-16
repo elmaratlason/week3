@@ -24,7 +24,7 @@ Filled out the Assignments: for the API and Load tests
 [Assignement](apitest/assignment.md)
 
 The API and Load test run in my build pipeline on Jenkins and everything is cleaned up afterwards
-- I run the tests in the same startpostgres
+- I run the tests in the same stage, if either fail the pipeline stops
 
 My [test reports](http://ec2-35-177-8-43.eu-west-2.compute.amazonaws.com:8080/job/hgop/27/testReport/) are published in Jenkins
 - one report for each build
